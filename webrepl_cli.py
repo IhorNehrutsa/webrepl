@@ -171,7 +171,7 @@ def help(rc=0):
     print("  [-p password] [-r/--reset] <local_file> <host>:<remote_file> - Copy local file to remote file and optionally reset after")
     print("Examples:")
     print("  %s script.py 192.168.4.1:/another_name.py" % exename)
-    print("  %s script.py 192.168.4.1:/app/" % exename)
+    print("  %s -p "" script.py 192.168.4.1:/app/" % exename)
     print("  %s -p password 192.168.4.1:/app/script.py ." % exename)
     sys.exit(rc)
 
@@ -207,7 +207,7 @@ def main():
             do_reset = True
             break
 
-    if not passwd:
+    if passwd is None:
         import getpass
         passwd = getpass.getpass()
 
